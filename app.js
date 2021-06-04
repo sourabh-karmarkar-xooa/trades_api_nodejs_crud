@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const connectionManager = require('./connection')
 const indexRouter = require('./routes/index');
-const tradesRouter = require('./routes/trades');
+const tradesRouter = require('./routes/trades.route');
 
 const app = express();
 connectionManager.getConnection();
