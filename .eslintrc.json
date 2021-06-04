@@ -1,0 +1,29 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "mocha": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+        "semi": ["error", "always"],
+        "eqeqeq": ["error", "always"],
+        "quotes": ["error", "double"],
+        "no-console": "error",
+        "comma-dangle": ["error", "never"],
+        "array-bracket-spacing": [2, "always"],
+        "indent": [2, 4],
+        "comma-spacing": [2, {"before": false, "after": true}],
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+        "no-unexpected-multiline": "off",
+        "camelcase": "off"
+    }
+}
