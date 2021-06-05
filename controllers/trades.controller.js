@@ -55,14 +55,27 @@ class Trades {
                 tradesResponse = await tradeModel.findAll();
             }
 
-            if (tradesResponse) {
-                this.response.status(200).send(tradesResponse);
-            } else {
-                this.response.status(400).send("Error in fetching trades...");
-            }
+            this.response.status(200).send(tradesResponse);
         } catch (e) {
             // eslint-disable-next-line no-console
             console.log(`Error:Trades:get ---> ${e}`);
+            this.response.status(400).send(e);
+        }
+    }
+
+    async getById () {
+        try {
+            const id = this.request.params.id || "";
+            const tradesResponse = id ? await tradeModel.findByPk(id) : "";
+
+            if (tradesResponse) {
+                this.response.status(200).send(tradesResponse);
+            } else {
+                this.response.status(404).send("ID not found");
+            }
+        } catch (e) {
+            // eslint-disable-next-line no-console
+            console.log(`Error:Trades:getById ---> ${e}`);
             this.response.status(400).send(e);
         }
     }
