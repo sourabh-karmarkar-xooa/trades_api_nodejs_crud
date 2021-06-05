@@ -1,6 +1,7 @@
 // Uncomment the code below to use Sequelize ORM
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("sqlite::memory:", {
+    // eslint-disable-next-line no-console
     logging: console.log
 });
 
@@ -41,7 +42,8 @@ const Trades = sequelize.define("Trades", {
     }
 }, {
     initialAutoIncrement: 1,
-    tableName: "Trades"
+    tableName: "Trades",
+    timestamps: false
 });
 
 module.exports = Trades;
