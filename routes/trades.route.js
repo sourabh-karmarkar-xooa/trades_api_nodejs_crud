@@ -7,4 +7,9 @@ router.post("/", async function (request, response) {
     return await trade.create();
 });
 
+router.get("/", async function (request, response) {
+    const trade = new Trades(request, response);
+    return await trade.get();
+});
+
 module.exports = router;
