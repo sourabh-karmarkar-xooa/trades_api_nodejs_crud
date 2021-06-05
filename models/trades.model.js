@@ -1,6 +1,8 @@
 // Uncomment the code below to use Sequelize ORM
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("sqlite::memory:");
+const sequelize = new Sequelize("sqlite::memory:", {
+    logging: console.log
+});
 
 // Uncomment the code below to use Mongoose ORM
 // const mongoose = require('mongoose');

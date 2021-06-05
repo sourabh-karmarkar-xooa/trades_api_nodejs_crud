@@ -1,4 +1,5 @@
 const tradeModel = require("../models/trades.model");
+const { Op } = require("sequelize");
 
 class Trades {
     constructor (request, response) {
@@ -33,7 +34,26 @@ class Trades {
 
     async get () {
         try {
-            const tradesResponse = await tradeModel.findAll();
+            const type = this.request.query.type || "";
+            const user_id = this.request.query.user_id || "";
+
+            const filterObj = {
+                where: {
+                    [Op.and]: [
+                        { type },
+                        { user_id }
+                    ]
+                }
+            };
+
+            let tradesResponse;
+
+            // If type and user id are present in the query parameters then filter by those else give all the records
+            if (type && user_id) {
+                tradesResponse = await tradeModel.findAll(filterObj);
+            } else {
+                tradesResponse = await tradeModel.findAll();
+            }
 
             if (tradesResponse) {
                 this.response.status(200).send(tradesResponse);
